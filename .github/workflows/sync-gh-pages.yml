@@ -10,30 +10,30 @@ env: # 设置环境变量
 permissions:
   contents: write  # 允许操作内容
   id-token: write  # 允许生成 ID token
-  pages: write
+  pages: write     # 允许操作 GitHub Pages
 
 jobs:
   build: # 自定义名称
     runs-on: ubuntu-latest
     steps:
       - name: 🚜 拉取最新代码
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.6.0 # 更新到最新的 v3.x 版本
         with:
           ref: 'main'
           repository: 'jaywcjlove/reference'
 
       - name: ♻️ 编译静态文件
         run: |
-          echo -e 'REF_URL=https://refs.xxx.net/\nREF_LABEL=网站首页' > .env
+          echo -e 'REF_URL=https://blog.cybersafezone.top/\nREF_LABEL=网站首页' > .env
           npm install
           npm run build
 
       - name: 🚀 上传静态文件到 GitHub Pages Artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v4 # 更新到最新的 v4 版本
         with:
           path: './dist' # 项目打包后的静态文件路径
 
       - name: 📄 发布到 GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v2.0.0 # 更新到最新的 v2.x 版本
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
