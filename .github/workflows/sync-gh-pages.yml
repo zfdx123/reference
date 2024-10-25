@@ -10,6 +10,7 @@ env: # 设置环境变量
 permissions:
   contents: write  # 允许操作内容
   id-token: write  # 允许生成 ID token
+  pages: write
 
 jobs:
   build: # 自定义名称
