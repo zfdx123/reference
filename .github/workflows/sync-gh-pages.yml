@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🚜 拉取最新代码
-        uses: actions/checkout@v3.6.0 # 更新到最新的 v3.x 版本
+        uses: actions/checkout@v4
         with:
           ref: 'main'
           repository: 'jaywcjlove/reference'
@@ -29,11 +29,11 @@ jobs:
           npm run build
 
       - name: 🚀 上传静态文件到 GitHub Pages Artifact
-        uses: actions/upload-pages-artifact@v3.0.1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: './dist' # 项目打包后的静态文件路径
 
       - name: 📄 发布到 GitHub Pages
-        uses: actions/deploy-pages@v4.0.5
+        uses: actions/deploy-pages@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
