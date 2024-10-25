@@ -29,11 +29,11 @@ jobs:
           npm run build
 
       - name: 🚀 上传静态文件到 GitHub Pages Artifact
-        uses: actions/upload-pages-artifact@v4 # 更新到最新的 v4 版本
+        uses: actions/upload-pages-artifact@v3.0.1
         with:
           path: './dist' # 项目打包后的静态文件路径
 
       - name: 📄 发布到 GitHub Pages
-        uses: actions/deploy-pages@v2.0.0 # 更新到最新的 v2.x 版本
+        uses: actions/deploy-pages@v4.0.5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
